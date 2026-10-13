@@ -170,7 +170,7 @@ function renderProjects(list,note){
   document.getElementById('pnote').textContent=note;
   bindCards();
 }
-renderProjects(PROJECTS,'// cards de exemplo — edite o array PROJECTS no código ou hospede o arquivo para carregar seus repositórios automaticamente.');
+renderProjects(PROJECTS,);
 // Busca dinâmica na API do GitHub (funciona quando o arquivo é hospedado fora do preview)
 fetch('https://api.github.com/users/lucaZz092/repos?per_page=100&sort=updated')
  .then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
