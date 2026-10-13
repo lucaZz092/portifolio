@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucas Mendonça Martins — Back-End Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c10;--bg2:#0f1218;--card:#12161e;--line:#1f2530;--tx:#cdd6e4;--mut:#7f8a9e;--ac:#64ffda;--ac2:#8892b0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+.mono{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;background:rgba(10,12,16,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .logo{color:var(--ac);font-weight:700}
+nav ul{display:flex;gap:26px;list-style:none;font-size:13px}
+nav a{color:var(--mut);text-decoration:none;transition:.2s}nav a:hover,nav a.on{color:var(--ac)}
+main{position:relative;z-index:1}
+section{max-width:1040px;margin:0 auto;padding:110px 6vw 40px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.hero .hi{color:var(--ac);font-size:14px;margin-bottom:14px}
+h1{font-size:clamp(38px,7vw,70px);line-height:1.05;color:#fff;letter-spacing:-.03em;font-weight:600}
+h1 span{color:var(--ac2)}
+.role{font-size:clamp(16px,2.6vw,24px);margin:18px 0;color:var(--tx);min-height:1.6em}
+.cursor{display:inline-block;width:2px;height:1.1em;background:var(--ac);vertical-align:middle;margin-left:3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.lead{max-width:560px;color:var(--mut);margin-bottom:34px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:12px 22px;border:1px solid var(--ac);color:var(--ac);border-radius:6px;text-decoration:none;font-size:13px;transition:.25s;position:relative}
+.btn:hover{background:rgba(100,255,218,.1);transform:translateY(-2px);box-shadow:0 8px 24px -10px var(--ac)}
+.btn.f{background:var(--ac);color:var(--bg);font-weight:700}.btn.f:hover{background:var(--ac)}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:40px;font-size:12px;color:var(--mut)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 0 var(--ac);animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h2{font-size:14px;color:var(--ac);font-weight:500;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid2{display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}nav ul{gap:14px;font-size:12px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(100,255,218,.09),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover{border-color:rgba(100,255,218,.4)}.card:hover::before{opacity:1}
+.dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:10px;height:10px;border-radius:50%;background:#2a3140}
+pre{font-size:13px;line-height:1.75;overflow-x:auto;color:var(--tx)}
+.k{color:#c792ea}.t{color:#82aaff}.s{color:#c3e88d}.p{color:var(--ac)}.c{color:#546178}
+.pr{list-style:none;font-size:14px}
+.pr li{padding:10px 0;border-bottom:1px dashed var(--line);display:flex;gap:12px;color:var(--tx)}
+.pr li:last-child{border:0}.pr b{color:var(--ac);font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{padding:10px 18px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;transition:.25s;cursor:default}
+.chip:hover{border-color:var(--ac);color:var(--ac);transform:translateY(-3px)}
+.chip.l{color:var(--mut);border-style:dashed}
+.bars{margin-top:30px;display:grid;gap:14px;max-width:560px}
+.bar .lb{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:6px}
+.bar .tr{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar .fi{height:100%;width:0;background:linear-gradient(90deg,var(--ac),#5ab4ff);border-radius:4px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.projs{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.proj{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;min-height:190px}
+.proj h3{font-size:16px;color:#fff;font-weight:500;display:flex;justify-content:space-between;gap:8px}
+.proj h3 span{color:var(--ac);transition:.25s}.proj:hover h3 span{transform:translate(3px,-3px)}
+.proj p{font-size:14px;color:var(--mut);flex:1}
+.tags{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--ac2)}
+.badge{font-size:10px;color:var(--bg);background:var(--ac2);padding:2px 8px;border-radius:4px;align-self:flex-start}
+.note{margin-top:18px;font-size:12px;color:var(--mut)}
+.contact{text-align:center;padding-bottom:70px}
+.contact h3{font-size:clamp(28px,5vw,44px);color:#fff;font-weight:600;margin:6px 0 14px;letter-spacing:-.02em}
+.contact p{color:var(--mut);max-width:460px;margin:0 auto 30px}
+.contact h2{justify-content:center}.contact h2::after{display:none}
+footer{position:relative;z-index:1;text-align:center;padding:30px 6vw 40px;font-size:12px;color:var(--mut);border-top:1px solid var(--line)}
+footer q{display:block;color:var(--ac2);margin-bottom:6px;font-style:italic}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<nav class="mono">
+  <a href="#top" class="logo">&lt;lm/&gt;</a>
+  <ul><li><a href="#sobre">sobre</a></li><li><a href="#stack">stack</a></li><li><a href="#projetos">projetos</a></li><li><a href="#contato">contato</a></li></ul>
+</nav>
+<main id="top">
+<section class="hero">
+  <div class="hi mono">// olá, mundo. eu sou</div>
+  <h1>Lucas Mendonça<br><span>Martins.</span></h1>
+  <div class="role mono"><span id="typed"></span><span class="cursor"></span></div>
+  <p class="lead">Desenvolvedor Back-End focado em construir sistemas robustos e escaláveis com Java e Spring Boot — com código limpo, arquitetura pensada e APIs que fazem sentido para quem consome.</p>
+  <div class="btns mono">
+    <a class="btn f" href="#projetos">ver projetos</a>
+    <a class="btn" href="https://github.com/lucaZz092" target="_blank" rel="noopener">github ↗</a>
+    <a class="btn" href="https://www.linkedin.com/in/perfil-lucas-mendonca" target="_blank" rel="noopener">linkedin ↗</a>
+  </div>
+  <div class="status mono"><span class="dot"></span>São Paulo, BR · aprendendo e evoluindo todo dia</div>
+</section>
+
+<section id="sobre" class="rv">
+  <h2 class="mono">01. sobre()</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="dots"><i></i><i></i><i></i></div>
+<pre class="mono"><span class="k">public class</span> <span class="t">Developer</span> {
+  <span class="t">String</span> foco       = <span class="s">"Back-End"</span>;
+  <span class="t">String[]</span> stack    = {<span class="s">"Java"</span>, <span class="s">"Spring Boot"</span>};
+  <span class="t">String</span> database   = <span class="s">"MySQL"</span>;
+  <span class="t">String</span> infra      = <span class="s">"Docker"</span>;
+  <span class="t">String[]</span> frontend = {<span class="s">"TypeScript"</span>, <span class="s">"React"</span>};
+  <span class="k">boolean</span> aprendendo = <span class="p">true</span>;
+}</pre>
+    </div>
+    <div class="card">
+      <div class="mono" style="color:var(--ac);font-size:13px;margin-bottom:8px">princípios()</div>
+      <ul class="pr">
+        <li><b>▸</b>Código limpo antes de código rápido</li>
+        <li><b>▸</b>Arquitetura pensada, não improvisada</li>
+        <li><b>▸</b>APIs que fazem sentido para quem consome</li>
+        <li><b>▸</b>Testes não são opcionais</li>
+        <li><b>▸</b>Aprendizado contínuo, sempre</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="rv">
+  <h2 class="mono">02. stack</h2>
+  <div class="chips mono">
+    <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">MySQL</span><span class="chip">Docker</span><span class="chip">TypeScript</span><span class="chip">React</span>
+  </div>
+  <div class="bars mono" id="bars">
+    <div class="bar" data-v="85"><div class="lb"><span>Back-End · Java / Spring</span><span>85%</span></div><div class="tr"><div class="fi"></div></div></div>
+    <div class="bar" data-v="70"><div class="lb"><span>Banco de dados · MySQL</span><span>70%</span></div><div class="tr"><div class="fi"></div></div></div>
+    <div class="bar" data-v="65"><div class="lb"><span>Infra · Docker</span><span>65%</span></div><div class="tr"><div class="fi"></div></div></div>
+    <div class="bar" data-v="55"><div class="lb"><span>Front-End · React / TS</span><span>55%</span></div><div class="tr"><div class="fi"></div></div></div>
+  </div>
+</section>
+
+<section id="projetos" class="rv">
+  <h2 class="mono">03. projetos</h2>
+  <div class="projs" id="projs"></div>
+  <p class="note mono" id="pnote"></p>
+</section>
+
+<section id="contato" class="contact rv">
+  <h2 class="mono">04. contato()</h2>
+  <h3>Vamos construir algo juntos?</h3>
+  <p>Estou aberto a oportunidades, projetos e boas conversas sobre tecnologia.</p>
+  <div class="btns mono" style="justify-content:center">
+    <a class="btn f" href="https://www.linkedin.com/in/perfil-lucas-mendonca" target="_blank" rel="noopener">falar no linkedin</a>
+    <a class="btn" href="https://github.com/lucaZz092" target="_blank" rel="noopener">ver github</a>
+  </div>
+</section>
+</main>
+<footer class="mono"><q>"Simplicidade é o último grau de sofisticação." — Leonardo da Vinci</q>© 2026 Lucas Mendonça Martins</footer>
+
+<script>
+// ===== EDITE AQUI seus projetos (usado como fallback / manual) =====
+const PROJECTS = [
+  {name:"lucaZz092", desc:"README de perfil do GitHub — apresentação com stack Java + Spring Boot, métricas e princípios de desenvolvimento.", lang:"Markdown", url:"https://github.com/lucaZz092/lucaZz092"},
+  {name:"Seu projeto Back-End", desc:"Substitua este card: descreva a API, o problema que resolve e as tecnologias usadas (Java, Spring Boot, MySQL, Docker).", lang:"Java", url:"https://github.com/lucaZz092", ph:true},
+  {name:"Seu projeto Full-Stack", desc:"Substitua este card: um projeto com front-end em React/TypeScript consumindo sua API.", lang:"TypeScript", url:"https://github.com/lucaZz092", ph:true}
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function renderProjects(list,note){
+  document.getElementById('projs').innerHTML=list.map(p=>`
+  <a class="card proj" href="${esc(p.url)}" target="_blank" rel="noopener">
+    ${p.ph?'<span class="badge mono">exemplo · edite</span>':''}
+    <h3 class="mono">${esc(p.name)}<span>↗</span></h3>
+    <p>${esc(p.desc||'Sem descrição.')}</p>
+    <div class="tags mono">${p.lang?`<span>● ${esc(p.lang)}</span>`:''}${p.stars?`<span>★ ${p.stars}</span>`:''}</div>
+  </a>`).join('');
+  document.getElementById('pnote').textContent=note;
+  bindCards();
+}
+renderProjects(PROJECTS,'// cards de exemplo — edite o array PROJECTS no código ou hospede o arquivo para carregar seus repositórios automaticamente.');
+// Busca dinâmica na API do GitHub (funciona quando o arquivo é hospedado fora do preview)
+fetch('https://api.github.com/users/lucaZz092/repos?per_page=100&sort=updated')
+ .then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
+   const l=rs.filter(r=>!r.fork&&r.name.toLowerCase()!=='lucazz092').slice(0,6);
+   if(l.length) renderProjects(l.map(r=>({name:r.name,desc:r.description,lang:r.language,url:r.html_url,stars:r.stargazers_count})),'// carregado ao vivo da API do GitHub');
+ }).catch(()=>{});
+
+// ===== Efeito de digitação =====
+const roles=["Back-End Developer","Java + Spring Boot","APIs bem projetadas","Sempre aprendendo"];
+let ri=0,ci=0,del=false;const te=document.getElementById('typed');
+(function tick(){const w=roles[ri];te.textContent=w.slice(0,ci);
+ if(!del&&ci===w.length){del=true;return setTimeout(tick,1500)}
+ if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+ ci+=del?-1:1;setTimeout(tick,del?35:70)})();
+
+// ===== Spotlight nos cards =====
+function bindCards(){document.querySelectorAll('.card').forEach(c=>{
+ if(c._b)return;c._b=1;
+ c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')})})}
+bindCards();
+
+// ===== Reveal + barras =====
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+ e.target.querySelectorAll('.bar').forEach(b=>b.querySelector('.fi').style.width=b.dataset.v+'%');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ===== Nav ativa =====
+const secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('nav ul a')];
+addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-200)cur=s.id});
+ links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+// ===== Fundo: rede de partículas reativa ao mouse =====
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H,pts=[],m={x:-999,y:-999};
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;const n=Math.min(90,Math.floor(W*H/17000));
+ pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+addEventListener('resize',rs);addEventListener('mousemove',e=>{m.x=e.clientX;m.y=e.clientY});rs();
+(function draw(){cx.clearRect(0,0,W,H);
+ for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  cx.fillStyle='rgba(100,255,218,.5)';cx.fillRect(p.x,p.y,1.6,1.6)}
+ for(let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+  if(d<120){cx.strokeStyle=`rgba(100,255,218,${.09*(1-d/120)})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+  const d=Math.hypot(pts[i].x-m.x,pts[i].y-m.y);
+  if(d<160){cx.strokeStyle=`rgba(100,255,218,${.35*(1-d/160)})`;cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(m.x,m.y);cx.stroke()}}
+ requestAnimationFrame(draw)})();
+</script>
+</body>
+</html>
